@@ -1,6 +1,6 @@
 steps:
 - name: "gcr.io/cloud-builders/gcloud"
-  args: ["app", "deploy", "gitea/"]
+  args: ["app", "deploy", "gitea/app.yaml"]
 - name: "gcr.io/cloud-builders/gcloud"
   args: ["app", "deploy", "dispatch.yaml"]
 timeout: "1600s"
