@@ -1,0 +1,4 @@
+dispatch:
+  # Send all urls to gitea for now
+  - url: "*/*"
+    service: gitea

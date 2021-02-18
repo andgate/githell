@@ -1,0 +1,37 @@
+runtime: custom
+env: flex
+service: gitea
+
+env_variables:
+  USER_UID: "1000"
+  USER_GID: "1000"
+  DB_TYPE: "postgres"
+  DB_HOST: "db:5432"
+  DB_NAME: "gitea"
+  DB_USER: "gitea"
+  DB_PASSWD: "gitea"
+
+# This sample incurs costs to run on the App Engine flexible environment.
+# The settings below are to reduce costs during testing and are not appropriate
+# for production use. For more information, see:
+# https://cloud.google.com/appengine/docs/flexible/nodejs/configuring-your-app-with-app-yaml
+manual_scaling:
+  instances: 1
+
+resources:
+  cpu: 2
+  memory_gb: 1.5
+  disk_size_gb: 10
+  volumes:
+  - name: ramdisk1
+    volume_type: tmpfs
+    size_gb: 0.5
+
+network:
+  session_affinity: true
+  forwarded_ports:
+    - 3000:3000
+    - 222:22
+
+beta_settings:
+  cloud_sql_instances: githell:us-west1:gitea-db
