@@ -1,0 +1,6 @@
+steps:
+- name: "gcr.io/cloud-builders/gcloud"
+  args: ["app", "deploy", "drone"]
+- name: "gcr.io/cloud-builders/gcloud"
+  args: ["app", "deploy", "gitea"]
+timeout: "1600s"
