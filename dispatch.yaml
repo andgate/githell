@@ -1,4 +1,6 @@
 dispatch:
   # Send all urls to gitea for now
+  - url: "*/chat/*"
+    service: chat
   - url: "*/*"
     service: gitea
