@@ -1,15 +1,8 @@
 const fs = require('fs')
-const privateKey  = fs.readFileSync('sslcert/key.pem', 'utf8')
-const certificate = fs.readFileSync('sslcert/cert.pem', 'utf8')
-const credentials = {
-  key: privateKey,
-  cert: certificate
-}
 const express = require('express')
 const app = express()
-// const httpServer = require('http').Server(app)
-const httpsServer = require('https').Server(credentials, app)
-const io = require('socket.io')(httpsServer)
+const httpServer = require('http').Server(app)
+const io = require('socket.io')(httpServer)
 const { v4: uuidV4 } = require('uuid')
 
 app.set('view engine', 'ejs')
@@ -34,4 +27,4 @@ io.on('connection', socket => {
 })
 
 const port = process.env.PORT || 3000
-httpsServer.listen(port)
+httpServer.listen(port)

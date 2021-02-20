@@ -2,5 +2,7 @@ steps:
 - name: "gcr.io/cloud-builders/gcloud"
   args: ["app", "deploy", "gitea/"]
 - name: "gcr.io/cloud-builders/gcloud"
+  args: ["app", "deploy", "chat/"]
+- name: "gcr.io/cloud-builders/gcloud"
   args: ["app", "deploy", "dispatch.yaml"]
 timeout: "1600s"
